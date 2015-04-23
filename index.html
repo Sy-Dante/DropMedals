@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            li{
+                background: pink;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                position: absolute;
+                list-style: none;
+                display: none;
+                text-align: center;
+            }
+            #main{
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+            }
+            #start{
+                display: block;
+                background: greenyellow;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+        <script type="text/javascript" src="js/DropMedals.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                DropMedals.create("#main","#start");
+            });
+        </script>
+    </head>
+    <body>
+        <ul id="main">
+            <li>花式撸管奖</li>
+            <li>表白先锋奖</li>
+            <li>分手大师奖</li>
+            <li>最勤撸手奖</li>
+            <li>啪啪啪啪奖</li>
+            <li>恋爱达人奖</li>
+            <li>五一劳动奖</li>
+        </ul>
+        <a id="start">走起</a>
+    </body>
+</html>
