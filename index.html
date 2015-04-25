@@ -30,14 +30,55 @@
                 height: 100px;
                 line-height: 100px;
                 text-align: center;
+                cursor: pointer;
             }
         </style>
         <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
-        <script type="text/javascript" src="js/DropMedals.js"></script>
+        <!--<script type="text/javascript" src="js/DropMedals_v1.0.js"></script>-->
+        <script type="text/javascript" src="js/DropMedals_v1.1.js"></script>
         <script type="text/javascript">
             $(function(){
-                DropMedals.create("#main","#start");
+                //倒计时
+//                var n = 2;
+//                var time = setInterval(function(){
+//                    $('#start').text(n);
+//                    n--;
+//                    if(n < 0){
+//                        $('#start').html('<b>走起!</b>');
+//                        DropMedals.create("#main","#start","#start");
+//                        clearInterval(time);
+//                    }
+//                }, 1000);
+                
+                var winner = false;
+                
+                function msg(winner){
+                    if(winner){
+//                        alert("恭喜你中奖，填写<a href='javascript:;'>邮箱</a>领取游戏礼包！");
+                        $('#start').html("恭喜你中奖，填写<a href='javascript:;'>邮箱</a>领取游戏礼包！");
+                        $("#start").unbind('click');
+                    }else{
+//                        alert("对不起，没有中奖，原因可能是……你这个人太懒！，再撸一次！");
+                        $('#start').html("对不起，没有中奖，原因可能是……你这个人太懒！，再撸一次！");
+                    }
+                }
+                
+                $("#start").click(function(){
+                    DropMedals.create({
+                        "main_selector" : "#main",
+                        "msg_selector" : "#start",
+                        "animate_time" : 5000,
+                        "is_winner" : winner,
+                        "callback" : function(){
+                            msg(winner);
+                        }
+                    });
+                });
             });
+            var lists = ['a', 'b', 'c'];
+            for (var item in lists){
+                console.log(item);
+            }
         </script>
     </head>
     <body>
@@ -50,6 +91,6 @@
             <li>恋爱达人奖</li>
             <li>五一劳动奖</li>
         </ul>
-        <a id="start">走起</a>
+        <div id="start">开始了哦！</div>
     </body>
 </html>
